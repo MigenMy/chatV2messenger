@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мессенджер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login" class="container">
+        <div class="login-box">
+            <h2>Привет к убежище @MigenMy</h2>
+            <input type="text" id="username" placeholder="Твой ник">
+            <button onclick="login()">Войти</button>
+        </div>
+    </div>
+    
+    <div id="messenger" class="container" style="display:none;">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Чаты</h2>
+                <button onclick="createGroup()">Создать группу</button>
+            </div>
+            <input type="text" id="search" placeholder="Search">
+            <div id="chat-list"></div>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">
+                <h2 id="current-chat-name">Главный чат</h2>
+            </div>
+            <div id="chat-window">
+                <div id="output"></div>
+            </div>
+            <div id="message-controls">
+                <input type="file" id="fileInput" style="display:none;">
+                <button class="icon-btn" onclick="document.getElementById('fileInput').click();">📎</button>
+                <input type="text" id="message" placeholder="Type a message..." onkeypress="checkEnter(event)">
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-group-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Создать группу</h2>
+            <input type="text" id="group-name" placeholder="Имя группы">
+            <button onclick="addGroup()">Создать</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

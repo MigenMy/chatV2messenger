@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #2A2F32;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: 90vh;
+    background: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.login-box {
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background: #292B2F;
+    border-radius: 10px;
+}
+
+.login-box input, #message-controls input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.sidebar {
+    width: 25%;
+    background: #292B2F;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+}
+
+.chat-area {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 20px;
+    background: #292B2F;
+    border-bottom: 1px solid #3f3f3f;
+    text-align: center;
+}
+
+#chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background: #1e1e1e;
+    background-image: url('whatsapp-bg.png'); /* Background image similar to WhatsApp */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#output {
+    display: flex;
+    flex-direction: column;
+}
+
+#output p {
+    background: #007bff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+#output .timestamp {
+    font-size: 0.7em; /* Мелкий размер времени */
+    color: #ccc;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+#output img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#message-controls {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #292B2F;
+    border-top: 1px solid #3f3f3f;
+}
+
+#message-controls input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.icon-btn, .send-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.send-btn {
+    background: #007bff;
+    border-radius: 5px;
+}
+
+.icon-btn:hover, .send-btn:hover {
+    background: #0056b3;
+}
+
+#search {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #3f3f3f;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #292B2F;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Добавляем узорный фон для каждого элемента чата */
+.chat-item {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.chat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('pattern.png'); /* Путь к узорному изображению */
+    opacity: 0.1; /* Прозрачность узорного фона */
+    border-radius: inherit;
+}
+
+.chat-item:hover {
+    background-color: #444;
+}
+/* Добавляем узорные линии между чат-группами */
+.chat-item:not(:last-child) {
+    border-bottom: 1px solid #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.active {
+    background-color: #007bff;
+}
+.chat-item:not(:last-child) {
+    border-bottom: 1px solid #444;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .chat-area {
+        width: 100%;
+    }
+
+    #chat-window {
+        height: 300px;
+    }
+}
